@@ -1,0 +1,15 @@
+version: "3"
+services:
+  springboot:
+    build: .
+    container_name: involves-fullstack-api
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    container_name: involves-fullstack-mongodb
+    command: mongod --smallfiles --logpath=/dev/null
